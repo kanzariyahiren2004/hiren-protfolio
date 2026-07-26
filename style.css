@@ -276,26 +276,44 @@ a{text-decoration:none;color:inherit}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* HAMBURGER */
+body.no-scroll{overflow:hidden!important}
 .hamburger{display:none;position:fixed;top:1rem;right:1rem;z-index:300;width:42px;height:42px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:10px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
 .hamburger span{display:block;width:20px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s var(--ease)}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:150;cursor:pointer}
 .overlay.show{display:block}
 
 @media(max-width:900px){
   .hamburger{display:flex}
-  .sidebar{transform:translateX(-100%);z-index:200}
+  .sidebar{
+    transform:translateX(-100%);
+    z-index:250;
+    width:80vw;
+    max-width:300px;
+    height:100vh;
+    position:fixed;
+    top:0;left:0;
+    overflow-y:auto;
+    transition:transform 0.3s ease;
+    pointer-events:auto;
+  }
   .sidebar.open{transform:translateX(0)}
+  .sb-nav{pointer-events:auto}
+  .nav-link{pointer-events:auto;position:relative;z-index:260}
   .main{margin-left:0}
   .section{padding:4rem 1.5rem}
-  .hero-name{font-size:40px}
-  .about-wrap,.skills-wrap,.contact-grid{grid-template-columns:1fr}
-  .s-title{font-size:28px}
-  .hero-stats{gap:1.5rem}
+  .hero-name{font-size:36px}
+  .about-wrap,.skills-wrap{grid-template-columns:1fr}
+  .s-title{font-size:26px}
+  .hero-stats{gap:1rem;flex-wrap:wrap}
   .proj-grid{grid-template-columns:1fr}
-  .edu-tbl th,.edu-tbl td{padding:12px 14px}
+  .edu-tbl th,.edu-tbl td{padding:10px 12px;font-size:12px}
+  .edu-tbl th{font-size:10px}
   .contact-layout{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .btn{width:100%;justify-content:center}
 }
