@@ -42,17 +42,31 @@ $(function () {
   }
   type();
 
-  /* HAMBURGER */
-  $('.hamburger').on('click', function () {
+  /* HAMBURGER - click + touch support */
+  $('.hamburger').on('click touchend', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     $(this).toggleClass('open');
     $('.sidebar').toggleClass('open');
     $('.overlay').toggleClass('show');
   });
-  $('.overlay').on('click', function () {
+
+  /* Close sidebar when overlay tapped */
+  $('.overlay').on('click touchend', function (e) {
+    e.preventDefault();
     $('.hamburger').removeClass('open');
     $('.sidebar').removeClass('open');
     $(this).removeClass('show');
   });
+
+  /* Close sidebar when nav link clicked on mobile */
+  function closeSidebar() {
+    if ($(window).width() < 900) {
+      $('.hamburger').removeClass('open');
+      $('.sidebar').removeClass('open');
+      $('.overlay').removeClass('show');
+    }
+  }
 
   /* ACTIVE NAV ON SCROLL */
   var $sections = $('section[id]');
@@ -77,11 +91,7 @@ $(function () {
     if ($t.length) {
       $('html,body').animate({ scrollTop: $t.offset().top - 20 }, 500, 'swing');
     }
-    if ($(window).width() < 900) {
-      $('.hamburger').removeClass('open');
-      $('.sidebar').removeClass('open');
-      $('.overlay').removeClass('show');
-    }
+    closeSidebar();
   });
 
   /* SCROLL REVEAL */
