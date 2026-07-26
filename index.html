@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Hiren Kanajariya — Web Developer portfolio. WordPress, PHP, Laravel, AI Automation."/>
+  <title>Hiren Kanajariya | Web Developer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Section numbering — replaces // prefix */
+    .s-tag { font-family: 'Fira Code', monospace; font-size: 12px; color: var(--accent); margin-bottom: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; letter-spacing: 0.05em; }
+    .s-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); font-size: 11px; font-weight: 700; color: var(--accent-light); flex-shrink: 0; }
+
+    /* Contact form */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 12px; }
+    .contact-form-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+    .form-title { font-size: 16px; font-weight: 600; margin-bottom: 1.25rem; color: var(--text-primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--bg-secondary); border: 1px solid var(--border-light);
+      border-radius: 8px; padding: 10px 14px; font-size: 13px;
+      color: var(--text-primary); font-family: 'Poppins', sans-serif;
+      transition: border-color 0.2s; outline: none; width: 100%;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      width: 100%; padding: 12px; background: var(--accent); color: #fff;
+      border: none; border-radius: 10px; font-size: 14px; font-weight: 600;
+      font-family: 'Poppins', sans-serif; cursor: pointer;
+      transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 0 20px rgba(124,58,237,0.35);
+    }
+    .btn-submit:hover { background: #6d28d9; transform: translateY(-1px); box-shadow: 0 0 28px rgba(124,58,237,0.5); }
+    .btn-submit svg { width: 16px; height: 16px; }
+    .form-success {
+      display: none; text-align: center; padding: 1rem;
+      color: var(--green); font-size: 14px; font-weight: 500;
+      background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 10px; margin-top: 12px;
+    }
+
+    /* Project live/not-live badge */
+    .p-status-live { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 4px; }
+    .p-status-live::before { content: '●'; font-size: 8px; }
+    .p-status-dev { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+    .p-status-dev::before { content: '○'; font-size: 10px; }
+
+    @media(max-width:900px){
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+<div class="overlay"></div>
+<div class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <div class="photo-circle">
+        <!-- To add your photo: set src="assets/your-photo.jpg" on the img below -->
+        <!-- Leave src="" to show HK initials -->
+        <img id="profileImg" src="" alt="Hiren Kanajariya"/>
+        <span class="photo-initials" id="photoInitials">HK</span>
+      </div>
+    </div>
+
+    <div class="status-badge"><div class="status-dot"></div>Open to work</div>
+    <div class="sb-name">Hiren Kanajariya</div>
+    <div class="sb-role">Web Developer</div>
+    <div class="sb-loc">Ahmedabad, Gujarat, India</div>
+
+    <div class="sb-divider"></div>
+
+    <nav class="sb-nav">
+      <a href="#home" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home <span class="nav-num">01</span>
+      </a>
+      <a href="#about" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        About <span class="nav-num">02</span>
+      </a>
+      <a href="#skills" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Skills <span class="nav-num">03</span>
+      </a>
+      <a href="#experience" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Experience <span class="nav-num">04</span>
+      </a>
+      <a href="#projects" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Projects <span class="nav-num">05</span>
+      </a>
+      <a href="#education" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education <span class="nav-num">06</span>
+      </a>
+      <a href="#certs" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Certificates <span class="nav-num">07</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact <span class="nav-num">08</span>
+      </a>
+    </nav>
+
+    <a class="soc-btn" href="assets/Hiren.pdf" target="_blank" download title="Download Resume" style="width:auto;padding:0 12px;gap:6px;font-size:11px;font-weight:600;color:var(--accent-light);border-color:rgba(124,58,237,0.4);background:rgba(124,58,237,0.08);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Resume
+    </a>
+
+    <div class="sb-socials">
+      <a class="soc-btn" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a class="soc-btn" href="https://www.linkedin.com/in/kanajariya-hiren-561843265/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a class="soc-btn" href="mailto:kanzariyahiren2004@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- 01 HOME -->
+    <section class="section" id="home">
+      <div class="hero-name reveal"><span>Hiren </span><span class="ln">Kanajariya</span></div>
+      <div class="hero-typed reveal d1">
+        <span class="typed-pre">I build &nbsp;</span>
+        <span id="typed-el"></span><span class="tcursor"></span>
+      </div>
+      <p class="hero-p reveal d2">Web Developer at <strong>Dasinfomedia</strong>, crafting responsive WordPress websites, PHP Laravel applications, and AI Automation workflows. Passionate about clean code and scalable real-world solutions.</p>
+      <div class="hero-btns reveal d3">
+        <a class="btn btn-primary" href="#projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          View projects
+        </a>
+        <a class="btn btn-outline" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Hire me
+        </a>
+        <a class="btn btn-outline" href="https://github.com/kanzariyahiren2004" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-outline" href="assets/Hiren.pdf" target="_blank" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
+      </div>
+      <div class="hero-stats reveal d4">
+        <div class="stat-item"><div class="stat-val" data-target="6" data-suffix=" mo">6 mo</div><div class="stat-lbl">Experience</div></div>
+        <div class="stat-item"><div class="stat-val" data-target="1" data-suffix=" live">1 live</div><div class="stat-lbl">Project</div></div>
+        <div class="stat-item"><div class="stat-val" data-target="6" data-suffix="+">6+</div><div class="stat-lbl">Projects built</div></div>
+        <div class="stat-item"><div class="stat-val" data-target="3" data-suffix="">3</div><div class="stat-lbl">Certificates</div></div>
+      </div>
+    </section>
+
+    <!-- 02 ABOUT -->
+    <section class="section" id="about">
+      <div class="s-tag"><span class="s-num">02</span> about me</div>
+      <div class="s-title reveal">Who <span>am I?</span></div>
+      <div class="about-wrap">
+        <div class="reveal-l">
+          <p class="about-p">I'm a <strong>Web Developer</strong> with 6 months of professional experience at <strong>Dasinfomedia</strong>, Ahmedabad. I specialize in building responsive WordPress websites, PHP Laravel backend applications, and AI Automation workflows that solve real business problems.</p>
+          <p class="about-p">I have strong expertise in HTML5, CSS3, JavaScript, jQuery, AJAX, PHP, Laravel, MySQL, and WordPress — with a focus on writing clean, scalable code that powers production applications.</p>
+          <p class="about-p">I'm always exploring AI tools, automation platforms, and emerging web technologies to stay ahead in the fast-evolving tech landscape and deliver better solutions for clients.</p>
+        </div>
+        <div class="about-cards reveal d1">
+          <div class="a-card"><div class="a-lbl">Current role</div><div class="a-val">Web Developer</div></div>
+          <div class="a-card"><div class="a-lbl">Company</div><div class="a-val">Dasinfomedia</div></div>
+          <div class="a-card"><div class="a-lbl">Experience</div><div class="a-val">6 Months</div></div>
+          <div class="a-card"><div class="a-lbl">Education</div><div class="a-val">MCA — LJ University</div></div>
+          <div class="a-card"><div class="a-lbl">Location</div><div class="a-val">Ahmedabad, Gujarat</div></div>
+          <div class="a-card"><div class="a-lbl">Languages</div><div class="a-val">English · Hindi · Gujarati</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 SKILLS -->
+    <section class="section" id="skills">
+      <div class="s-tag"><span class="s-num">03</span> technical skills</div>
+      <div class="s-title reveal">My <span>Skills</span></div>
+      <p class="s-sub reveal d1">Technologies I use to build modern, production-grade web applications.</p>
+      <div class="skills-wrap">
+        <div class="sk-card reveal d1">
+          <div class="sk-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Frontend
+          </div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">HTML5 / CSS3</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">JavaScript / jQuery / AJAX</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-fill" data-w="80"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">Bootstrap</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">React JS</span><span class="sk-pct">65%</span></div><div class="sk-track"><div class="sk-fill" data-w="65"></div></div></div>
+        </div>
+        <div class="sk-card reveal d2">
+          <div class="sk-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Backend
+          </div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">PHP</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">Laravel (MVC / REST API)</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-fill" data-w="80"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">MySQL</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">REST API Integration</span><span class="sk-pct">82%</span></div><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
+        </div>
+        <div class="sk-card reveal d3">
+          <div class="sk-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            CMS &amp; Tools
+          </div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">WordPress</span><span class="sk-pct">88%</span></div><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">Custom Plugins</span><span class="sk-pct">75%</span></div><div class="sk-track"><div class="sk-fill" data-w="75"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">Git / GitHub</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
+          <div class="sk-row"><div class="sk-top"><span class="sk-name">AI Automation</span><span class="sk-pct">70%</span></div><div class="sk-track"><div class="sk-fill" data-w="70"></div></div></div>
+        </div>
+        <div class="sk-card reveal d4">
+          <div class="sk-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Other Technologies
+          </div>
+          <div id="react-badges-mount"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="s-tag"><span class="s-num">04</span> work experience</div>
+      <div class="s-title reveal">Where I've <span>Worked</span></div>
+      <p class="s-sub reveal d1">6 months of professional experience building real products for real clients.</p>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="ex-card">
+            <div class="ex-top">
+              <div class="ex-company">Dasinfomedia</div>
+              <div class="ex-badge">Feb 2026 — Present · 6 Months</div>
+            </div>
+            <div class="ex-role">Web Developer</div>
+            <div class="ex-loc">Ahmedabad, Gujarat, India</div>
+            <ul class="ex-list">
+              <li>Designed and launched a live <strong>Glass &amp; Mirror business website</strong> using WordPress — full theme customization, custom plugin development, SEO optimization, and production deployment.</li>
+              <li>Built <strong>custom WordPress plugins</strong> including an HR System plugin, delivering unique business functionality tailored to client requirements.</li>
+              <li>Developed and deployed <strong>AI Automation workflows</strong> to eliminate repetitive business tasks and significantly improve team productivity.</li>
+              <li>Engineered full-stack <strong>PHP &amp; Laravel</strong> applications with MVC architecture, REST API integration, and optimized MySQL database design for production-grade performance.</li>
+              <li>Collaborated on code reviews, debugging, and deployment — consistently shipping high-quality projects on schedule for live client delivery.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 PROJECTS -->
+    <section class="section" id="projects">
+      <div class="s-tag"><span class="s-num">05</span> featured work</div>
+      <div class="s-title reveal">My <span>Projects</span></div>
+      <p class="s-sub reveal d1">Projects I've designed, built, and shipped — from concept to production.</p>
+      <div class="proj-grid">
+
+        <!-- LIVE -->
+        <div class="p-card reveal d1">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://aquamarine-chamois-102248.hostingersite.com/" target="_blank" title="Live site">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">Glass &amp; Mirror Website</div>
+          <div class="p-status-live">Live production</div>
+          <div class="p-desc">Fully responsive business website built with WordPress at Dasinfomedia. Custom plugins, contact forms, service pages, and SEO optimization — deployed live for a real client.</div>
+          <div class="p-tags"><span class="p-tag">WordPress</span><span class="p-tag">PHP</span><span class="p-tag">Custom Plugins</span><span class="p-tag">SEO</span></div>
+        </div>
+
+        <!-- NOT LIVE -->
+        <div class="p-card reveal d2">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">E-Commerce Website</div>
+          <div class="p-status-dev">In development</div>
+          <div class="p-desc">Full-featured online shopping platform with product catalog, cart management, order tracking, payment integration, user authentication, and admin dashboard for inventory management.</div>
+          <div class="p-tags"><span class="p-tag">Laravel</span><span class="p-tag">PHP</span><span class="p-tag">MySQL</span><span class="p-tag">jQuery</span><span class="p-tag">Bootstrap</span></div>
+        </div>
+
+        <!-- NOT LIVE -->
+        <div class="p-card reveal d3">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">Student Management System</div>
+          <div class="p-status-dev">In development</div>
+          <div class="p-desc">Complete student management portal with enrollment, attendance tracking, grade management, timetable scheduling, fee management, and role-based access for admin, teachers, and students.</div>
+          <div class="p-tags"><span class="p-tag">PHP</span><span class="p-tag">Laravel</span><span class="p-tag">MySQL</span><span class="p-tag">AJAX</span><span class="p-tag">Bootstrap</span></div>
+        </div>
+
+        <div class="p-card reveal d1">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.82V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">Taxi Booking System</div>
+          <div class="p-status-dev">In development</div>
+          <div class="p-desc">Real-time taxi booking platform with ride scheduling, driver assignment, fare calculation, GPS tracking simulation, booking history, and separate dashboards for riders, drivers, and admin.</div>
+          <div class="p-tags"><span class="p-tag">Laravel</span><span class="p-tag">PHP</span><span class="p-tag">MySQL</span><span class="p-tag">AJAX</span><span class="p-tag">REST API</span></div>
+        </div>
+
+        <div class="p-card reveal d2">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">Car Booking System</div>
+          <div class="p-status-dev">In development</div>
+          <div class="p-desc">Vehicle rental and car booking web application built in Laravel with car listings, availability calendar, online booking, payment flow, user profiles, booking history, and admin management panel.</div>
+          <div class="p-tags"><span class="p-tag">Laravel</span><span class="p-tag">PHP</span><span class="p-tag">MySQL</span><span class="p-tag">Bootstrap</span><span class="p-tag">jQuery</span></div>
+        </div>
+
+        <div class="p-card reveal d3">
+          <div class="p-head">
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><line x1="17" y1="11" x2="22" y2="11"/><line x1="19.5" y1="8.5" x2="19.5" y2="13.5"/></svg></div>
+            <div class="p-actions">
+              <a class="p-action" href="https://github.com/kanzariyahiren2004" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-name">HR System — WordPress Plugin</div>
+          <div class="p-status-live">Live at Dasinfomedia</div>
+          <div class="p-desc">Custom WordPress plugin built at Dasinfomedia for HR management — employee records, leave requests, attendance logs, payroll tracking, and role-based access for HR admins and employees.</div>
+          <div class="p-tags"><span class="p-tag">WordPress</span><span class="p-tag">PHP</span><span class="p-tag">Plugin Dev</span><span class="p-tag">MySQL</span><span class="p-tag">AJAX</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 06 EDUCATION -->
+    <section class="section" id="education">
+      <div class="s-tag"><span class="s-num">06</span> academic background</div>
+      <div class="s-title reveal">My <span>Education</span></div>
+      <p class="s-sub reveal d1">Academic qualifications — from school to postgraduate.</p>
+      <div class="edu-wrap reveal d2">
+        <table class="edu-tbl">
+          <thead>
+            <tr>
+              <th style="width:20%">Qualification</th>
+              <th style="width:40%">Board / University</th>
+              <th style="width:20%">Result</th>
+              <th style="width:20%">Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="edu-q">MCA</span></td>
+              <td><div class="edu-uni-row"><div class="edu-dot"></div>LJ University</div></td>
+              <td><span class="edu-r">CGPA: 6.8</span></td>
+              <td><span class="edu-y">2024 – 2026</span></td>
+            </tr>
+            <tr>
+              <td><span class="edu-q">B.Com</span></td>
+              <td><div class="edu-uni-row"><div class="edu-dot"></div>Saurashtra University</div></td>
+              <td><span class="edu-r">CGPA: 6.4</span></td>
+              <td><span class="edu-y">2021 – 2024</span></td>
+            </tr>
+            <tr>
+              <td><span class="edu-q">HSC</span></td>
+              <td><div class="edu-uni-row"><div class="edu-dot"></div>GHSEB</div></td>
+              <td><span class="edu-r">58.14%</span></td>
+              <td><span class="edu-y">2020 – 2021</span></td>
+            </tr>
+            <tr>
+              <td><span class="edu-q">SSC</span></td>
+              <td><div class="edu-uni-row"><div class="edu-dot"></div>GSEB</div></td>
+              <td><span class="edu-r">60%</span></td>
+              <td><span class="edu-y">2018 – 2019</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 07 CERTIFICATES -->
+    <section class="section" id="certs">
+      <div class="s-tag"><span class="s-num">07</span> certifications</div>
+      <div class="s-title reveal">My <span>Certificates</span></div>
+      <p class="s-sub reveal d1">Courses and professional credentials I've earned.</p>
+      <div class="cert-grid">
+        <div class="cert-card reveal d1">
+          <div class="cert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <div><div class="cert-n">Generative AI</div><div class="cert-b">Coursera</div></div>
+        </div>
+        <div class="cert-card reveal d2">
+          <div class="cert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <div><div class="cert-n">Data Science</div><div class="cert-b">Coursera</div></div>
+        </div>
+        <div class="cert-card reveal d3">
+          <div class="cert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div><div class="cert-n">Web Development</div><div class="cert-b">Dasinfomedia</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 CONTACT -->
+    <section class="section" id="contact">
+      <div class="s-tag"><span class="s-num">08</span> get in touch</div>
+      <div class="s-title reveal">Contact <span>Me</span></div>
+      <p class="s-sub reveal d1">Open to job opportunities, freelance projects, or just a quick hello!</p>
+
+      <div class="contact-layout">
+
+        <!-- Info cards -->
+        <div class="contact-info">
+          <a class="c-card reveal d1" href="mailto:kanzariyahiren2004@gmail.com">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="c-lbl">Email</div><div class="c-val">kanzariyahiren2004@gmail.com</div></div>
+          </a>
+          <a class="c-card reveal d2" href="tel:+918799371033">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.62 4.48 2 2 0 0 1 3.59 2.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.1-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="c-lbl">Phone</div><div class="c-val">+91 8799371033</div></div>
+          </a>
+          <a class="c-card reveal d3" href="https://www.linkedin.com/in/kanajariya-hiren-561843265/" target="_blank">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div><div class="c-lbl">LinkedIn</div><div class="c-val">kanajariya-hiren-561843265</div></div>
+          </a>
+          <a class="c-card reveal d4" href="https://github.com/kanzariyahiren2004" target="_blank">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+            <div><div class="c-lbl">GitHub</div><div class="c-val">kanzariyahiren2004</div></div>
+          </a>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrap reveal d2">
+          <div class="form-title">Send me a message</div>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First name</label>
+                <input type="text" id="fname" name="fname" placeholder="John" required/>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last name</label>
+                <input type="text" id="lname" name="lname" placeholder="Doe"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email address</label>
+              <input type="email" id="femail" name="femail" placeholder="john@example.com" required/>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="fsubject" placeholder="Job opportunity / Project collaboration"/>
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="fmessage" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send message
+            </button>
+            <div class="form-success" id="formSuccess">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;display:inline;margin-right:6px;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg>
+              Message sent! I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer">&lt;/&gt; designed &amp; built by <span>Hiren Kanajariya</span> · 2026</footer>
+
+  </main>
+</div>
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- particles.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+<!-- React + ReactDOM -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.min.js"></script>
+<!-- Main JS -->
+<script src="main.js"></script>
+</body>
+</html>
