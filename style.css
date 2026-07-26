@@ -281,7 +281,7 @@ a{text-decoration:none;color:inherit}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:150}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;cursor:pointer}
 .overlay.show{display:block}
 
 @media(max-width:900px){
